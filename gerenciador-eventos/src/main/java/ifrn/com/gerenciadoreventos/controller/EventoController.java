@@ -14,7 +14,7 @@ public class EventoController {
 	private EventoRepository eventoRepository;
 	
 	@GetMapping("/evento")
-	public String listAluno(Model model) {	
+	public String listEventos(Model model) {	
 		model.addAttribute("eventos", eventoRepository.getAllEventos());
 		return "/list-eventos";
 	}

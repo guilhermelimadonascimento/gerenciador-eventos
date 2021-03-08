@@ -35,7 +35,7 @@ public class ParticipanteController {
 	
 	
 	@PostMapping("/participante/{tema}")
-	public String saveTurma(@PathVariable("tema") String tema, @ModelAttribute Participante participante, @ModelAttribute Evento evento) {
+	public String saveParticipante(@PathVariable("tema") String tema, @ModelAttribute Participante participante, @ModelAttribute Evento evento) {
 		eventoRepository.getEventoByTema(tema).getParticipantes().add(participante);
 		return "redirect:/";
 	}
