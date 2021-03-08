@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Página Inicial</title>
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+</head>
+<body  class="p-5">
+	<div th:insert="~{/layout/navbar :: navbar}"></div>
+	<div>
+		<h1 class="mb-5">Novo participante</h1>
+	  	<form th:action="@{/participante/__${evento.tema}__}" class="container" method="post" th:object="${participante}">
+			<div class="form-group">
+				
+				<input type="hidden" th:if="*{cpf}" name="edit" value="editando">
+				
+				<div class="row">
+					<div class="col-sm-4">
+						<label for="cpf">CPF: </label>
+						<input type="text" id="cpf" th:field="*{cpf}" placeholder="CPF" class="form-control" required="required"><br>
+					</div>
+					<div class="col-sm-8">
+						<label for="nome">Nome: </label>
+						<input type="text" id="nome" th:field="*{nome}" placeholder="NOME" class="form-control" required="required"><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4">
+						<label for="nome">Telefone: </label>
+						<input type="text" id="nome" th:field="*{telefone}" placeholder="TELEFONE" class="form-control" required="required"><br>
+					</div>
+					<div class="col-sm-8">
+						<label for="cpf">E-mail: </label>
+						<input type="text" id="cpf" th:field="*{email}" placeholder="EMAIL" class="form-control" required="required"><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4">
+						<label for="tipoParticipante">Sobre o participante:</label>
+						<select th:field="*{tipoParticipante}" id="tipoParticipante" class="form-control">
+							  <option th:value="${'servidor'}">SERVIDOR</option>
+							  <option th:value="${'aluno'}">ALUNO</option>
+							  <option th:value="${'externo'}">PÚBLICO EXTERNO</option>	  
+						</select><br>					
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary m-3 p-2 pl-4 pr-4">Salvar</button>
+			</div>
+		</form>
+	
+	</div>
+	<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

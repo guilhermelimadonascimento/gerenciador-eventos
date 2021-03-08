@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Dados de Evento</title>
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.3/css/bootstrap.min.css}"/>
+</head>
+<body class="p-5">
+	<div th:insert="~{/layout/navbar :: navbar}"></div>
+	
+	<h2 class="mt-5 mb-5">Detalhes do Evento:</h2>
+	Nome:	<strong th:text="${evento.tema}"></strong><br>
+	Data: 	<span th:text="${evento.data}"></span><br>
+	Lista de participantes (<span th:text="${#lists.size(evento.participantes)}"></span>):<br>
+	<ul th:each="participante : ${evento.participantes}">
+		<li th:text="${participante.nome}"></li>
+	</ul>
+	
+	<a th:href="@{/participante/inscrever/__${evento.tema}__}" class="btn btn-primary mt-3">Fazer inscrição</a>
+
+	<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
